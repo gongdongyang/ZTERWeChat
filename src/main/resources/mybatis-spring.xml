@@ -28,8 +28,7 @@
 
 	<!-- 自动扫描mapper的配置 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" autowire="no">
-		<property name="basePackage" value="com.creditease.monitor.dao" />
-		<property name="markerInterface" value="com.creditease.core.extend.SqlMapper" />
+		<property name="basePackage" value="com.huixue.cn.ztej.wechat.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 	
