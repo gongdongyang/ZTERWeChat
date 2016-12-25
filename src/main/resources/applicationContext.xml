@@ -28,7 +28,7 @@
 
     <!-- <context:annotation-config /> -->
 
-	<context:component-scan base-package="com.creditease.monitor">
+	<context:component-scan base-package="com.ztej.wechat">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
@@ -78,7 +78,6 @@
 		destroy-method="close">
 		<!-- Connection Info -->
 		<property name="driverClassName" value="${jdbc.driver}" />
-		<property name="url" value="${jdbc.slave.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 
@@ -128,60 +127,5 @@
 			
 		</tx:attributes>
 	</tx:advice>
-	
-	<bean id="eventHandlerList" class="java.util.ArrayList">
-		<constructor-arg>
-			<list>
-				<ref bean="fetchMobileEventHandler"/>
-				<ref bean="fetchTaobaoEventHandler"/>
-				<ref bean="proxyCloseEventHandler"/>
-			</list>
-		</constructor-arg>
-	</bean>
-	
-	<bean id="fetchTaobaoClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://tbf.yixin.com/command.service</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.creditease.webservice.ExecuteCommandService</value>
-		</property>
-	</bean>
-	
-	<bean id="fetchMobileClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://mf.yixin.com/fetchMobile/command.service</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.creditease.webservice.ExecuteCommandService</value>
-		</property>
-	</bean>
-	
-	<bean id="fetchUnicomClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://uf.yixin.com/command.service</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.creditease.webservice.ExecuteCommandService</value>
-		</property>
-	</bean>
-	
-	<bean id="fetchTelecomClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://tf.yixin.com/command.service</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.creditease.webservice.ExecuteCommandService</value>
-		</property>
-	</bean>
-	
-	<bean id="fetchMonitorClient" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
-		<property name="serviceUrl">
-			<value>http://mtf.yixin.com/command.service</value>
-		</property>
-		<property name="serviceInterface">
-			<value>com.creditease.webservice.ExecuteCommandService</value>
-		</property>
-	</bean>
 	
 </beans>
